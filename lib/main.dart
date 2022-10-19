@@ -1,8 +1,13 @@
+import 'package:app_find_job/core/helpers/local_storage_helper.dart';
+import 'package:app_find_job/routes.dart';
+import 'package:app_find_job/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './screens/home/home.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  await LocalStorageHelper.initLocalStorageHelper();
   runApp(MyApp());
 }
 
@@ -18,7 +23,8 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF43B1B7),
         accentColor: const Color(0xFFFED408),
       ),
-      home: const HomePage(),
+      routes: routes,
+      home: const SplashPage(),
     );
   }
 }
