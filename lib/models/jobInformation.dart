@@ -1,3 +1,5 @@
+import 'package:app_find_job/core/helpers/asset_helper.dart';
+
 class jobInformation {
   String companyName;
   String logoURL;
@@ -29,7 +31,7 @@ class jobInformation {
     return [
       jobInformation(
         'Google LLC,',
-        'assets/images/google_logo.png',
+        AssetHelper.googlelogo,
         true,
         'Senior front end developer',
         2000,

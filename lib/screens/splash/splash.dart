@@ -1,14 +1,14 @@
 import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/core/helpers/image_helper.dart';
 import 'package:app_find_job/core/helpers/local_storage_helper.dart';
-import 'package:app_find_job/screens/home/home.dart';
+import 'package:app_find_job/main_app.dart';
 import 'package:app_find_job/screens/intro/intro.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
-  static String routeName = "/splash";
+  static String routeName = "/SplashPage";
   @override
   State<SplashPage> createState() => _SplashPageState();
 }
@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
     await Future.delayed(const Duration(milliseconds: 2000));
 
     if (ignoreIntroScreen != null && ignoreIntroScreen) {
-      Navigator.of(context).pushNamed(HomePage.routeName);
+      Navigator.of(context).pushNamed(MainApp.routeName);
     } else {
       LocalStorageHelper.setValue('ignoreIntroScreen', true);
       Navigator.of(context).pushNamed(IntroPage.routeName);
