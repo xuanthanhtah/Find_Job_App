@@ -3,9 +3,8 @@ import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class JobDetail extends StatelessWidget {
-  final jobInformation jobinformation;
-
-  JobDetail(this.jobinformation);
+  final jobInformation jobinformations;
+  JobDetail(this.jobinformations);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,10 +18,13 @@ class JobDetail extends StatelessWidget {
       height: 600,
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              color: Colors.grey.withOpacity(0.3),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
+                color: Colors.black,
+              ),
               height: 5,
               width: 60,
             ),
@@ -44,11 +46,11 @@ class JobDetail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.withOpacity(0.1),
                           ),
-                          child: Image.asset(jobinformation.logoURL),
+                          child: Image.asset(jobinformations.logoURL),
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          jobinformation.companyName,
+                          jobinformations.companyName,
                           style: const TextStyle(
                             fontSize: 16,
                           ),
@@ -58,10 +60,10 @@ class JobDetail extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          jobinformation.status
+                          jobinformations.status
                               ? Icons.bookmark
                               : Icons.bookmark_outline_rounded,
-                          color: jobinformation.status
+                          color: jobinformations.status
                               ? Theme.of(context).primaryColor
                               : Colors.black,
                         ),
@@ -74,7 +76,7 @@ class JobDetail extends StatelessWidget {
                 ),
                 // Tên công việc
                 Text(
-                  jobinformation.title,
+                  jobinformations.title,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -85,7 +87,7 @@ class JobDetail extends StatelessWidget {
                 ),
                 //Lương
                 Text(
-                  "Lương: " + jobinformation.salary.toString() + " \$",
+                  "Lương: " + jobinformations.salary.toString() + " \$",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -98,7 +100,7 @@ class JobDetail extends StatelessWidget {
                 Row(
                   children: [
                     IconText(Icons.timelapse_outlined,
-                        'Hạn nộp hồ sơ: ' + jobinformation.jobInformationTime),
+                        'Hạn nộp hồ sơ: ' + jobinformations.jobInformationTime),
                   ],
                 ),
                 const SizedBox(
@@ -109,9 +111,9 @@ class JobDetail extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconText(
-                        Icons.location_on_outlined, jobinformation.location),
+                        Icons.location_on_outlined, jobinformations.location),
                     IconText(
-                        Icons.access_time_outlined, jobinformation.jobtype),
+                        Icons.access_time_outlined, jobinformations.jobtype),
                   ],
                 ),
                 const SizedBox(
@@ -129,7 +131,7 @@ class JobDetail extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  jobinformation.description,
+                  jobinformations.description,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
@@ -150,7 +152,7 @@ class JobDetail extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  jobinformation.req,
+                  jobinformations.req,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
@@ -171,7 +173,7 @@ class JobDetail extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  jobinformation.benefits,
+                  jobinformations.benefits,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,

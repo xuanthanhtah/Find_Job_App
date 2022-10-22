@@ -1,13 +1,12 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
-import 'package:app_find_job/models/jobInformation.dart';
+import 'package:app_find_job/models/Recruiter.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
-class JobItem extends StatelessWidget {
-  final jobInformation jobinformation;
-  final bool showTime;
+class RecruiterItem extends StatelessWidget {
+  final recruiter recruiters;
 
-  JobItem(this.jobinformation, {this.showTime = false});
+  RecruiterItem(this.recruiters);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,10 +14,10 @@ class JobItem extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.white,
         border: Border.all(
           color: ColorPalette.primaryColor.withOpacity(0.5),
         ),
+        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,11 +35,11 @@ class JobItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey.withOpacity(0.1),
                     ),
-                    child: Image.asset(jobinformation.logoURL),
+                    child: Image.asset(recruiters.logoURL),
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    jobinformation.companyName,
+                    recruiters.CompanyName,
                     style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,
@@ -48,24 +47,7 @@ class JobItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Icon(
-                jobinformation.status
-                    ? Icons.bookmark
-                    : Icons.bookmark_outline_outlined,
-                color: jobinformation.status
-                    ? Theme.of(context).primaryColor
-                    : Colors.black,
-              )
             ],
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Text(
-            jobinformation.title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
           ),
           const SizedBox(
             height: 15,
@@ -73,9 +55,7 @@ class JobItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconText(Icons.location_on_outlined, jobinformation.location),
-              if (!showTime)
-                IconText(Icons.access_time_outlined, jobinformation.jobtype),
+              IconText(Icons.location_on_outlined, recruiters.address),
             ],
           )
         ],
