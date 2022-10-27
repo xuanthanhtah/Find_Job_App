@@ -1,5 +1,6 @@
 import 'package:app_find_job/core/helpers/local_storage_helper.dart';
 import 'package:app_find_job/routes.dart';
+import 'package:app_find_job/screens/login/login.dart';
 import 'package:app_find_job/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         accentColor: const Color(0xFFFED408),
       ),
       routes: routes,
-      home: const SplashPage(),
+      home: LoginPage(),
     );
   }
 }

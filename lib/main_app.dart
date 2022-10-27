@@ -48,11 +48,11 @@ class _MainAppState extends State<MainApp> {
             title: Text('Công việc'),
           ),
           SalomonBottomBarItem(
-            icon: Icon(FontAwesomeIcons.building, size: 20),
+            icon: Icon(FontAwesomeIcons.solidBuilding, size: 20),
             title: Text('Công ty'),
           ),
           SalomonBottomBarItem(
-            icon: Icon(FontAwesomeIcons.user, size: 20),
+            icon: Icon(FontAwesomeIcons.solidUser, size: 20),
             title: Text('Cá nhân'),
           ),
         ],
