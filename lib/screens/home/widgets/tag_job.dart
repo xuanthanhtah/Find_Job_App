@@ -10,9 +10,11 @@ class TagJob extends StatefulWidget {
 
 class _TagJobState extends State<TagJob> {
   final tagJob = <String>[
-    'All',
     'IT',
     'Marketing',
+    "làm ruộng",
+    "làm ruộng",
+    "làm ruộng",
   ];
   var selected = 0;
   @override
