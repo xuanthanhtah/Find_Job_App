@@ -1,9 +1,12 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
+import 'package:app_find_job/main_app.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
   static const routeName = '/LoginPage';
 
   @override
@@ -11,6 +14,30 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  User? currentUser;
+  Future signIn() async {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    )
+        .then((auth) {
+      currentUser = auth.user!;
+      Navigator.of(context).pushNamed(MainApp.routeName);
+    }).catchError((error) {
+      print(error);
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
                         border: InputBorder.none,
@@ -83,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Mật khẩu của bạn",
@@ -104,13 +133,16 @@ class _LoginPageState extends State<LoginPage> {
                     color: ColorPalette.primaryColor,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Center(
-                    child: Text(
-                      'Đăng nhập',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                  child: GestureDetector(
+                    onTap: signIn,
+                    child: Center(
+                      child: Text(
+                        'Đăng nhập',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),

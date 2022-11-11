@@ -1,14 +1,18 @@
 import 'package:app_find_job/core/helpers/local_storage_helper.dart';
 import 'package:app_find_job/routes.dart';
-import 'package:app_find_job/screens/login/login.dart';
 import 'package:app_find_job/screens/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
   await LocalStorageHelper.initLocalStorageHelper();
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
         accentColor: const Color(0xFFFED408),
       ),
       routes: routes,
-      home: LoginPage(),
+      home: SplashPage(),
     );
   }
 }

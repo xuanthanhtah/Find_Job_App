@@ -3,6 +3,7 @@ import 'package:app_find_job/core/helpers/image_helper.dart';
 import 'package:app_find_job/core/helpers/local_storage_helper.dart';
 import 'package:app_find_job/main_app.dart';
 import 'package:app_find_job/screens/intro/intro.dart';
+import 'package:app_find_job/screens/login/login.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     await Future.delayed(const Duration(milliseconds: 2000));
 
     if (ignoreIntroScreen != null && ignoreIntroScreen) {
-      Navigator.of(context).pushNamed(MainApp.routeName);
+      Navigator.of(context).pushNamed(LoginPage.routeName);
     } else {
       LocalStorageHelper.setValue('ignoreIntroScreen', true);
       Navigator.of(context).pushNamed(IntroPage.routeName);

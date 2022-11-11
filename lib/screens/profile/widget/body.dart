@@ -1,18 +1,21 @@
 import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/screens/profile/widget/profile_item.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'info.dart';
 
 class Body extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Info(
-            name: "Lê Xuân Thành",
-            email: "thanh26092000@gmail.com",
+            name: "Email của bạn",
+            email: user.email!,
             image: AssetHelper.avatar,
           ),
           SizedBox(
@@ -47,7 +50,9 @@ class Body extends StatelessWidget {
           ),
           ProfileItem(
             textItem: "Đăng xuất",
-            press: () {},
+            press: () {
+              FirebaseAuth.instance.signOut();
+            },
           ),
         ],
       ),

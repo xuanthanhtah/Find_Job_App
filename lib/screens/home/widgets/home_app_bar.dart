@@ -1,15 +1,18 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
 import 'package:app_find_job/core/helpers/asset_helper.dart';
+import 'package:app_find_job/screens/login/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(
-          top: 70, left: 25, right: 25), //MediaQuery.of(context).padding.top
+          top: 25, left: 25, right: 25), //MediaQuery.of(context).padding.top
       child: userAppBar(
-        name: "Lê Xuân Thành",
+        name: user.email!,
         avatar: AssetHelper.avatar,
       ),
     );
@@ -17,13 +20,12 @@ class HomeAppBar extends StatelessWidget {
 }
 
 class userAppBar extends StatelessWidget {
-  const userAppBar({
+  userAppBar({
     Key? key,
     required this.name,
     required this.avatar,
   }) : super(key: key);
   final String name, avatar;
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -40,7 +42,7 @@ class userAppBar extends StatelessWidget {
             SizedBox(height: 10),
             Text(
               name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ],
         ),
@@ -71,11 +73,8 @@ class userAppBar extends StatelessWidget {
               ),
             ),
             SizedBox(width: 20),
-            GestureDetector(
-              onTap: () {},
-              child: ClipOval(
-                child: Image.asset(avatar, width: 40),
-              ),
+            ClipOval(
+              child: Image.asset(avatar, width: 40),
             )
           ],
         ),
