@@ -1,45 +1,51 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
 import 'package:app_find_job/core/helpers/asset_helper.dart';
-import 'package:app_find_job/main_app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  final VoidCallback showRegisterPage;
-  const LoginPage({
+class RegisterPage extends StatefulWidget {
+  final VoidCallback showLoginPage;
+  const RegisterPage({
     Key? key,
-    required this.showRegisterPage,
+    required this.showLoginPage,
   }) : super(key: key);
-  static const routeName = '/LoginPage';
+
+  static const routeName = '/RegisterPage';
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  User? currentUser;
-  Future signIn() async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    )
-        .then((auth) {
-      currentUser = auth.user!;
-      Navigator.of(context).pushNamed(MainApp.routeName);
-    }).catchError((error) {
-      print(error);
-    });
+  final _confirmpasswordController = TextEditingController();
+
+  Future signUp() async {
+    if (confirmpasswordController()) {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    }
+  }
+
+  bool confirmpasswordController() {
+    if (_passwordController.text.trim() ==
+        _confirmpasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmpasswordController.dispose();
     super.dispose();
   }
 
@@ -58,20 +64,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 100,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 24,
                 ),
                 Text(
-                  "Chào Mừng",
-                  style: GoogleFonts.shalimar(
-                    fontSize: 70,
-                    color: ColorPalette.textColor,
-                  ),
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  "Bạn đến với chúng tôi",
+                  "Đăng ký tài khoản thôi!",
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 26,
                     color: ColorPalette.textColor,
@@ -127,6 +123,31 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
+                  height: 10,
+                ),
+                // Confirm password
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: TextField(
+                        controller: _confirmpasswordController,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: "Xác nhận mật khẩu của bạn",
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
                   height: 25,
                 ),
                 //button
@@ -139,10 +160,10 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: GestureDetector(
-                      onTap: signIn,
+                      onTap: signUp,
                       child: Center(
                         child: Text(
-                          'Đăng nhập',
+                          'Đăng ký',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -161,15 +182,15 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Bạn chưa có tài khoản? ',
+                      'Bạn đã có tài khoản! ',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     GestureDetector(
-                      onTap: widget.showRegisterPage,
+                      onTap: widget.showLoginPage,
                       child: Text(
-                        'Đăng ký ngay',
+                        'Đăng nhập ngay',
                         style: TextStyle(
                           color: ColorPalette.primaryColor,
                           fontWeight: FontWeight.bold,
