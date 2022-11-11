@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "983277571546",
+    "project_id": "ticket-to-future",
+    "storage_bucket": "ticket-to-future.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983277571546:android:5464c0c2ac1397941904e3",
+        "android_client_info": {
+          "package_name": "com.tickettofuture.app_find_job"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983277571546-bccnjcub6et7dfbs1qrt2infu8ei54ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvywwMVuOxllOCv8UsQw7Pews_DmFsj6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983277571546-bccnjcub6et7dfbs1qrt2infu8ei54ve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

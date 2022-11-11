@@ -1,4 +1,5 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
+import 'package:app_find_job/main_page.dart';
 import 'package:app_find_job/screens/profile/widget/body.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,16 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorPalette.primaryColor,
-        leading: SizedBox(),
+        leading: IconButton(
+          icon: const Icon(Icons.login_outlined),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => MainPage(),
+              ),
+            );
+          },
+        ),
         centerTitle: true,
         elevation: 0,
         title: Text(
