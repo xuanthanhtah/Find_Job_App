@@ -23,13 +23,7 @@ class Body extends StatelessWidget {
           ),
           ProfileItem(
             textItem: "Chỉnh sửa thông tin cá nhân",
-            press: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => SearchPage(),
-              //   ),
-              // );
-            },
+            press: () {},
           ),
           SizedBox(
             height: 20,

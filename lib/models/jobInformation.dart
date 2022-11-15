@@ -84,3 +84,7 @@ class jobInformation {
     ];
   }
 }
+// To parse this JSON data, do
+//
+//     final jobInformation = jobInformationFromJson(jsonString);
+

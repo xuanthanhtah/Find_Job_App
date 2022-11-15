@@ -1,10 +1,11 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
-import 'package:app_find_job/models/Recruiter.dart';
+import 'package:app_find_job/core/helpers/asset_helper.dart';
+import 'package:app_find_job/models/recuiter.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class RecruiterItem extends StatelessWidget {
-  final recruiter recruiters;
+  final Recuiter recruiters;
 
   RecruiterItem(this.recruiters);
   @override
@@ -35,11 +36,11 @@ class RecruiterItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey.withOpacity(0.1),
                     ),
-                    child: Image.asset(recruiters.logoURL),
+                    child: Image.asset(AssetHelper.airbnblogo),
                   ),
                   const SizedBox(width: 10),
                   Text(
-                    recruiters.CompanyName,
+                    recruiters.companyName,
                     style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 16,

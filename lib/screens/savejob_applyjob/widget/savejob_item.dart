@@ -1,19 +1,21 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
+import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/models/jobInformation.dart';
+import 'package:app_find_job/models/jobinfor.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class SavejobItem extends StatelessWidget {
-  final jobInformation jobinformation;
+  final JobInformation jobInformation;
   final bool showTime;
 
-  SavejobItem(this.jobinformation, {this.showTime = false});
+  SavejobItem(this.jobInformation, {this.showTime = false});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        jobinformation.status
+        jobInformation.status == 1
             ? Container(
                 width: 375,
                 padding: const EdgeInsets.all(20),
@@ -40,11 +42,11 @@ class SavejobItem extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey.withOpacity(0.1),
                               ),
-                              child: Image.asset(jobinformation.logoURL),
+                              child: Image.asset(AssetHelper.avatar),
                             ),
                             const SizedBox(width: 10),
                             Text(
-                              jobinformation.companyName,
+                              jobInformation.jobTitle,
                               style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 16,
@@ -53,10 +55,10 @@ class SavejobItem extends StatelessWidget {
                           ],
                         ),
                         Icon(
-                          jobinformation.status
+                          jobInformation.status == 1
                               ? Icons.bookmark
                               : Icons.bookmark_outline_outlined,
-                          color: jobinformation.status
+                          color: jobInformation.status == 1
                               ? Theme.of(context).primaryColor
                               : Colors.black,
                         )
@@ -66,7 +68,7 @@ class SavejobItem extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      jobinformation.title,
+                      jobInformation.jobTitle,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -78,10 +80,10 @@ class SavejobItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconText(Icons.location_on_outlined,
-                            jobinformation.location),
+                            jobInformation.workingLocation),
                         if (!showTime)
                           IconText(Icons.access_time_outlined,
-                              jobinformation.jobtype),
+                              jobInformation.jobType),
                       ],
                     )
                   ],

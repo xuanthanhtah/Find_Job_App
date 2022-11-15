@@ -1,10 +1,13 @@
+import 'package:app_find_job/controllers/jobinformationcontroller.dart';
 import 'package:app_find_job/screens/savejob_applyjob/widget/applyjob_item.dart';
 import 'package:app_find_job/screens/search/widget/job_search_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:app_find_job/models/jobInformation.dart';
+import 'package:get/get.dart';
 
 class ApplyJobList extends StatelessWidget {
-  final jobList = jobInformation.generatejobInformation();
+  final JobInformationController jobInformationcontroller =
+      Get.put(JobInformationController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +28,17 @@ class ApplyJobList extends StatelessWidget {
                     isScrollControlled: true,
                     context: context,
                     builder: (context) => JobSearchDetail(
-                      jobList[index],
+                      jobInformationcontroller.jobInformationList[index],
                     ),
                   );
                 },
                 child: ApplyJobItem(
-                  jobList[index],
+                  jobInformationcontroller.jobInformationList[index],
                   showTime: false,
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(height: 20),
-          itemCount: jobList.length),
+          itemCount: jobInformationcontroller.jobInformationList.length),
     );
   }
 }
