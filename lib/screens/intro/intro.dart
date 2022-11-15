@@ -3,6 +3,7 @@ import 'package:app_find_job/core/constants/color_constants.dart';
 import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/core/helpers/image_helper.dart';
 import 'package:app_find_job/main_app.dart';
+import 'package:app_find_job/main_page.dart';
 import 'package:app_find_job/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:app_find_job/core/constants/textstyle_constants.dart';
@@ -126,7 +127,7 @@ class _IntroPageState extends State<IntroPage> {
                                   curve: Curves.easeIn);
                             } else {
                               Navigator.of(context)
-                                  .pushNamed(MainApp.routeName);
+                                  .pushNamed(MainPage.routeName);
                             }
                           },
                         ),

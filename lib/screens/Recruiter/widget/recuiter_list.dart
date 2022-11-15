@@ -1,10 +1,12 @@
+import 'package:app_find_job/controllers/recuitercontroller.dart';
 import 'package:app_find_job/models/Recruiter.dart';
 import 'package:app_find_job/screens/Recruiter/widget/recruiter_item_detail.dart';
 import 'package:app_find_job/screens/Recruiter/widget/recuiter_item.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecruiterList extends StatelessWidget {
-  final recruiterList = recruiter.generateRecuiter();
+  final RecuiterController recuiterController = Get.put(RecuiterController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,16 +26,16 @@ class RecruiterList extends StatelessWidget {
                     isScrollControlled: true,
                     context: context,
                     builder: (context) => RecruiterItemDetail(
-                      recruiterList[index],
+                      recuiterController.RecuiterList[index],
                     ),
                   );
                 },
                 child: RecruiterItem(
-                  recruiterList[index],
+                  recuiterController.RecuiterList[index],
                 ),
               ),
           separatorBuilder: (_, index) => const SizedBox(height: 20),
-          itemCount: recruiterList.length),
+          itemCount: recuiterController.RecuiterList.length),
     );
   }
 }

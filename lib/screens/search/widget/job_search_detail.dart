@@ -1,11 +1,13 @@
+import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/models/jobInformation.dart';
+import 'package:app_find_job/models/jobinfor.dart';
 import 'package:flutter/material.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 
 class JobSearchDetail extends StatelessWidget {
-  final jobInformation jobinformation;
-
-  JobSearchDetail(this.jobinformation);
+  //final jobInformation jobinformation;
+  final JobInformation jobInformation;
+  JobSearchDetail(this.jobInformation);
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +47,11 @@ class JobSearchDetail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.withOpacity(0.1),
                           ),
-                          child: Image.asset(jobinformation.logoURL),
+                          child: Image.asset(AssetHelper.avatar),
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          jobinformation.companyName,
+                          jobInformation.jobTitle,
                           style: const TextStyle(
                             fontSize: 16,
                           ),
@@ -59,10 +61,10 @@ class JobSearchDetail extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          jobinformation.status
+                          jobInformation.status == 1
                               ? Icons.bookmark
                               : Icons.bookmark_outline_rounded,
-                          color: jobinformation.status
+                          color: jobInformation.status == 1
                               ? Theme.of(context).primaryColor
                               : Colors.black,
                         ),
@@ -75,7 +77,7 @@ class JobSearchDetail extends StatelessWidget {
                 ),
                 // Tên công việc
                 Text(
-                  jobinformation.title,
+                  jobInformation.jobLevel,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -86,7 +88,7 @@ class JobSearchDetail extends StatelessWidget {
                 ),
                 //Lương
                 Text(
-                  "Lương: " + jobinformation.salary.toString() + " \$",
+                  "Lương: " + jobInformation.maxSalary.toString() + " \$",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -98,8 +100,11 @@ class JobSearchDetail extends StatelessWidget {
                 //Hạn nộp hồ sơ
                 Row(
                   children: [
-                    IconText(Icons.timelapse_outlined,
-                        'Hạn nộp hồ sơ: ' + jobinformation.jobInformationTime),
+                    IconText(
+                      Icons.timelapse_outlined,
+                      'Hạn nộp hồ sơ: ' +
+                          jobInformation.jobInformationTimeEnd.toString(),
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -109,10 +114,10 @@ class JobSearchDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    IconText(Icons.location_on_outlined,
+                        jobInformation.workingLocation),
                     IconText(
-                        Icons.location_on_outlined, jobinformation.location),
-                    IconText(
-                        Icons.access_time_outlined, jobinformation.jobtype),
+                        Icons.access_time_outlined, jobInformation.jobType),
                   ],
                 ),
                 const SizedBox(
@@ -130,7 +135,7 @@ class JobSearchDetail extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  jobinformation.description,
+                  jobInformation.description,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
@@ -150,34 +155,34 @@ class JobSearchDetail extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  jobinformation.req,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                // Quyền lợi
-                const Text(
-                  'Quyền lợi',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  jobinformation.benefits,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                // Text(
+                //   jobinformation.req,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.normal,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 30,
+                // ),
+                // // Quyền lợi
+                // const Text(
+                //   'Quyền lợi',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Text(
+                //   jobinformation.benefits,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.normal,
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 25),
                   height: 45,

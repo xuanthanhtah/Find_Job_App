@@ -72,8 +72,13 @@ class userAppBar extends StatelessWidget {
               ),
             ),
             SizedBox(width: 20),
-            ClipOval(
-              child: Image.asset(avatar, width: 40),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/ProfilePage');
+              },
+              child: ClipOval(
+                child: Image.asset(avatar, width: 40),
+              ),
             )
           ],
         ),

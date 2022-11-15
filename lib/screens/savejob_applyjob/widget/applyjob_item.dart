@@ -1,13 +1,15 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
+import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/models/jobInformation.dart';
+import 'package:app_find_job/models/jobinfor.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class ApplyJobItem extends StatelessWidget {
-  final jobInformation jobinformation;
+  final JobInformation jobInformation;
   final bool showTime;
 
-  ApplyJobItem(this.jobinformation, {this.showTime = false});
+  ApplyJobItem(this.jobInformation, {this.showTime = false});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,11 +40,11 @@ class ApplyJobItem extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey.withOpacity(0.1),
                         ),
-                        child: Image.asset(jobinformation.logoURL),
+                        child: Image.asset(AssetHelper.avatar),
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        jobinformation.companyName,
+                        jobInformation.jobTitle,
                         style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
@@ -51,10 +53,10 @@ class ApplyJobItem extends StatelessWidget {
                     ],
                   ),
                   Icon(
-                    jobinformation.status
+                    jobInformation.status == 0
                         ? Icons.bookmark
                         : Icons.bookmark_outline_outlined,
-                    color: jobinformation.status
+                    color: jobInformation.status == 1
                         ? Theme.of(context).primaryColor
                         : Colors.black,
                   )
@@ -64,7 +66,7 @@ class ApplyJobItem extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                jobinformation.title,
+                jobInformation.jobTitle,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -75,10 +77,11 @@ class ApplyJobItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconText(Icons.location_on_outlined, jobinformation.location),
+                  IconText(Icons.location_on_outlined,
+                      jobInformation.workingLocation),
                   if (!showTime)
                     IconText(
-                        Icons.access_time_outlined, jobinformation.jobtype),
+                        Icons.access_time_outlined, jobInformation.jobType),
                 ],
               )
             ],

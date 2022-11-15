@@ -17,18 +17,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HomeAppBar(),
-              const SearchJob(),
-              const TagJob(),
-              JobInformation(),
-            ],
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HomeAppBar(),
+                const SearchJob(),
+                const TagJob(),
+                JobInformation(),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

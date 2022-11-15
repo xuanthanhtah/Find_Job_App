@@ -1,10 +1,11 @@
+import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/models/Recruiter.dart';
+import 'package:app_find_job/models/recuiter.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 
 class RecruiterItemDetail extends StatelessWidget {
-  final recruiter recruiters;
-
+  final Recuiter recruiters;
   RecruiterItemDetail(this.recruiters);
   @override
   Widget build(BuildContext context) {
@@ -44,11 +45,11 @@ class RecruiterItemDetail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.withOpacity(0.1),
                           ),
-                          child: Image.asset(recruiters.logoURL),
+                          child: Image.asset(AssetHelper.airbnblogo),
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          recruiters.CompanyName,
+                          recruiters.companyName,
                           style: const TextStyle(
                             fontSize: 16,
                           ),
@@ -83,7 +84,7 @@ class RecruiterItemDetail extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  recruiters.RecruiterIntroduction,
+                  recruiters.companyIntroduction,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.normal,
@@ -92,32 +93,33 @@ class RecruiterItemDetail extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Hình ảnh công ty",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                ...recruiters.RecruiterGalleries.map(
-                  (e) => Container(
-                    margin: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        ConstrainedBox(
-                          constraints: BoxConstraints(),
-                          child: Image.asset(
-                            e,
-                            width: 180,
-                            fit: BoxFit.cover,
-                            alignment: Alignment.center,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ).toList(),
+                // Text(
+                //   "Hình ảnh công ty",
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.normal,
+                //   ),
+                // ),
+                //sử lý danh sách ảnh
+                // ...recruiters.thumbnailCv.map(
+                //   (e) => Container(
+                //     margin: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
+                //     child: Row(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         ConstrainedBox(
+                //           constraints: BoxConstraints(),
+                //           child: Image.asset(
+                //             e,
+                //             width: 180,
+                //             fit: BoxFit.cover,
+                //             alignment: Alignment.center,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ).toList(),
               ],
             )
           ],

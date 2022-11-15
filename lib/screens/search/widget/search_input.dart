@@ -1,6 +1,11 @@
+import 'package:app_find_job/controllers/jobinformationcontroller.dart';
+import 'package:app_find_job/models/jobinfor.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SearchInput extends StatelessWidget {
+  List<JobInformation> data = <JobInformation>[];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,4 +51,14 @@ class SearchInput extends StatelessWidget {
       ),
     );
   }
+
+  // @override
+  // Widget buildSuggestions(BuildContext context) {
+  //   List<String> matchQuery = [];
+  //   for (var items in data) {
+  //     if (items.toLowerCase().contains(query.toLowerCase())) {
+  //       matchQuery.add(items.jobTitle);
+  //     }
+  //   }
+  // }
 }
