@@ -15,8 +15,11 @@ class SearchPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SearchAppBar(),
-              SearchInput(),
               SearchOption(),
+              SizedBox(
+                height: 20,
+              ),
+              // SearchInput(),
               Expanded(child: SearchList()),
             ],
           ),

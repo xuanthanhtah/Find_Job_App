@@ -1,6 +1,7 @@
 import 'package:app_find_job/models/jobInformation.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class JobDetail extends StatelessWidget {
   final jobInformation jobinformations;
