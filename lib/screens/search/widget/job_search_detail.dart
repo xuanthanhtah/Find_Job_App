@@ -3,6 +3,7 @@ import 'package:app_find_job/models/jobInformation.dart';
 import 'package:app_find_job/models/jobinfor.dart';
 import 'package:flutter/material.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class JobSearchDetail extends StatelessWidget {
   //final jobInformation jobinformation;
@@ -124,34 +125,56 @@ class JobSearchDetail extends StatelessWidget {
                   height: 30,
                 ),
                 // Mô tả
-                const Text(
-                  'Mô tả công việc',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  jobInformation.description,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                // const Text(
+                //   'Mô tả công việc',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                Html(
+                  data: jobInformation.description,
+                  tagsList: Html.tags..addAll(["bird", "flutter"]),
+                  style: {
+                    "table": Style(
+                      backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                    ),
+                    "tr": Style(
+                      border: Border(bottom: BorderSide(color: Colors.grey)),
+                    ),
+                    "th": Style(
+                      padding: EdgeInsets.all(6),
+                      backgroundColor: Colors.grey,
+                    ),
+                    "td": Style(
+                      padding: EdgeInsets.all(6),
+                      alignment: Alignment.topLeft,
+                    ),
+                    'h5':
+                        Style(maxLines: 2, textOverflow: TextOverflow.ellipsis),
+                  },
+                  // child: Text(
+                  //   jobinformations.description,
+                  //   style: const TextStyle(
+                  //     fontSize: 16,
+                  //     fontWeight: FontWeight.normal,
+                  //   ),
+                  // ),
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 // Yêu cầu
-                const Text(
-                  'Yêu cầu ứng viên',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
+                // const Text(
+                //   'Yêu cầu ứng viên',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
                 const SizedBox(
                   height: 10,
                 ),
