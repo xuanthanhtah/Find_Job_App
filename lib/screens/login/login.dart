@@ -1,6 +1,7 @@
 import 'package:app_find_job/core/constants/color_constants.dart';
 import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/main_app.dart';
+import 'package:app_find_job/screens/ForgotPassword/forgotpassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -156,6 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 18,
                 ),
+
                 //not a member ? sign up
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -177,6 +179,36 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: 18,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPasswordPage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Quên mật khẩu?',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.red[400],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 18,
                 ),
               ],
             ),

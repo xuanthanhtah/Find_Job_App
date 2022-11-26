@@ -16,9 +16,6 @@ class SearchPage extends StatelessWidget {
             children: [
               SearchAppBar(),
               SearchOption(),
-              SizedBox(
-                height: 20,
-              ),
               // SearchInput(),
               Expanded(child: SearchList()),
             ],

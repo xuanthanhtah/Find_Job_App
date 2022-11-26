@@ -37,7 +37,7 @@ class JobItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey.withOpacity(0.1),
                     ),
-                    child: Image.asset(AssetHelper.avatar),
+                    child: Image.asset(AssetHelper.logo),
                   ),
                   const SizedBox(width: 10),
                   Text(

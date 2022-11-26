@@ -24,7 +24,7 @@ class JobInformation extends StatelessWidget {
                     isScrollControlled: true,
                     context: context,
                     builder: (context) => JobDetail(
-                      jobList[index],
+                      jobInformationcontroller.jobInformationList[index],
                     ),
                   );
                 },
@@ -35,7 +35,7 @@ class JobInformation extends StatelessWidget {
           separatorBuilder: (_, index) => const SizedBox(
                 width: 15,
               ),
-          itemCount: jobList.length),
+          itemCount: 5),
     );
   }
 }

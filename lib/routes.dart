@@ -1,5 +1,6 @@
 import 'package:app_find_job/main_app.dart';
 import 'package:app_find_job/main_page.dart';
+import 'package:app_find_job/screens/ForgotPassword/forgotpassword.dart';
 import 'package:app_find_job/screens/Recruiter/Recruiter.dart';
 import 'package:app_find_job/screens/home/home.dart';
 import 'package:app_find_job/screens/intro/intro.dart';
@@ -19,4 +20,5 @@ final Map<String, WidgetBuilder> routes = {
   ProfilePage.routeName: (context) => ProfilePage(),
   //LoginPage.routeName: (context) => LoginPage(),
   MainPage.routeName: (context) => MainPage(),
+  ForgotPasswordPage.routeName: (context) => ForgotPasswordPage(),
 };
