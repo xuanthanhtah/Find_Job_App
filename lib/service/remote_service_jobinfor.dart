@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class RemotesServiceJobInformation {
   static const String url =
-      'http://172.29.192.1:2001/api/JobInformation/GetAll';
+      'http://192.168.1.248:2001/api/JobInformation/GetAll';
   static var client = http.Client();
 
   static Future<List<JobInformation>> fetchJobInformations() async {

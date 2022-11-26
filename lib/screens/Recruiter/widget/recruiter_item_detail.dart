@@ -3,6 +3,7 @@ import 'package:app_find_job/models/Recruiter.dart';
 import 'package:app_find_job/models/recuiter.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class RecruiterItemDetail extends StatelessWidget {
   final Recuiter recruiters;
@@ -83,12 +84,27 @@ class RecruiterItemDetail extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  recruiters.companyIntroduction,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                Html(
+                  data: recruiters.companyIntroduction,
+                  tagsList: Html.tags..addAll(["bird", "flutter"]),
+                  style: {
+                    "table": Style(
+                      backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                    ),
+                    "tr": Style(
+                      border: Border(bottom: BorderSide(color: Colors.grey)),
+                    ),
+                    "th": Style(
+                      padding: EdgeInsets.all(6),
+                      backgroundColor: Colors.grey,
+                    ),
+                    "td": Style(
+                      padding: EdgeInsets.all(6),
+                      alignment: Alignment.topLeft,
+                    ),
+                    'h5':
+                        Style(maxLines: 2, textOverflow: TextOverflow.ellipsis),
+                  },
                 ),
                 const SizedBox(
                   height: 10,

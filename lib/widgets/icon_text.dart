@@ -15,6 +15,9 @@ class IconText extends StatelessWidget {
         ),
         Text(
           text,
+          overflow: TextOverflow.fade,
+          maxLines: 1,
+          softWrap: false,
           style: const TextStyle(
             fontSize: 12,
             color: Colors.black,

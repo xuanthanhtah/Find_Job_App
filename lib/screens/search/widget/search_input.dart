@@ -3,7 +3,28 @@ import 'package:app_find_job/models/jobinfor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SearchInput extends StatelessWidget {
+class SearchInput extends StatefulWidget {
+  @override
+  State<SearchInput> createState() => _SearchInputState();
+}
+
+class _SearchInputState extends State<SearchInput> {
+  final JobInformationController jobInformationcontroller =
+      Get.put(JobInformationController());
+  List<JobInformation> jobInformations = [];
+
+  void setJobInformations(String value) {
+    setState(() {
+      jobInformations = jobInformationcontroller.jobInformationList
+          .where(
+            (element) => element.jobTitle.toLowerCase().contains(
+                  value.toLowerCase(),
+                ),
+          )
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,6 +33,9 @@ class SearchInput extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              onChanged: (value) {
+                setJobInformations(value);
+              },
               cursorColor: Colors.grey,
               decoration: InputDecoration(
                 fillColor: Colors.white,

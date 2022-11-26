@@ -1,10 +1,12 @@
+import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:app_find_job/models/jobInformation.dart';
+import 'package:app_find_job/models/jobinfor.dart';
 import 'package:app_find_job/widgets/icon_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class JobDetail extends StatelessWidget {
-  final jobInformation jobinformations;
+  final JobInformation jobinformations;
   JobDetail(this.jobinformations);
   @override
   Widget build(BuildContext context) {
@@ -47,11 +49,11 @@ class JobDetail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.withOpacity(0.1),
                           ),
-                          child: Image.asset(jobinformations.logoURL),
+                          child: Image.asset(AssetHelper.logo),
                         ),
                         const SizedBox(width: 10),
                         Text(
-                          jobinformations.companyName,
+                          jobinformations.jobTitle,
                           style: const TextStyle(
                             fontSize: 16,
                           ),
@@ -61,10 +63,10 @@ class JobDetail extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          jobinformations.status
+                          jobinformations.status == 1
                               ? Icons.bookmark
                               : Icons.bookmark_outline_rounded,
-                          color: jobinformations.status
+                          color: jobinformations.status == 1
                               ? Theme.of(context).primaryColor
                               : Colors.black,
                         ),
@@ -77,7 +79,7 @@ class JobDetail extends StatelessWidget {
                 ),
                 // Tên công việc
                 Text(
-                  jobinformations.title,
+                  jobinformations.jobTitle,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -88,7 +90,7 @@ class JobDetail extends StatelessWidget {
                 ),
                 //Lương
                 Text(
-                  "Lương: " + jobinformations.salary.toString() + " \$",
+                  "Lương: " + jobinformations.maxSalary.toString() + " \$",
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -100,8 +102,10 @@ class JobDetail extends StatelessWidget {
                 //Hạn nộp hồ sơ
                 Row(
                   children: [
-                    IconText(Icons.timelapse_outlined,
-                        'Hạn nộp hồ sơ: ' + jobinformations.jobInformationTime),
+                    IconText(
+                        Icons.timelapse_outlined,
+                        'Hạn nộp hồ sơ: ' +
+                            jobinformations.jobInformationTimeEnd.toString()),
                   ],
                 ),
                 const SizedBox(
@@ -111,75 +115,90 @@ class JobDetail extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    IconText(Icons.location_on_outlined,
+                        jobinformations.workingLocation),
                     IconText(
-                        Icons.location_on_outlined, jobinformations.location),
-                    IconText(
-                        Icons.access_time_outlined, jobinformations.jobtype),
+                        Icons.access_time_outlined, jobinformations.jobType),
                   ],
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 // Mô tả
-                const Text(
-                  'Mô tả công việc',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
+                // const Text(
+                //   'Mô tả công việc',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  jobinformations.description,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
+                Html(
+                  data: jobinformations.description,
+                  tagsList: Html.tags..addAll(["bird", "flutter"]),
+                  style: {
+                    "table": Style(
+                      backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                    ),
+                    "tr": Style(
+                      border: Border(bottom: BorderSide(color: Colors.grey)),
+                    ),
+                    "th": Style(
+                      padding: EdgeInsets.all(6),
+                      backgroundColor: Colors.grey,
+                    ),
+                    "td": Style(
+                      padding: EdgeInsets.all(6),
+                      alignment: Alignment.topLeft,
+                    ),
+                    'h5':
+                        Style(maxLines: 2, textOverflow: TextOverflow.ellipsis),
+                  },
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 // Yêu cầu
-                const Text(
-                  'Yêu cầu ứng viên',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  jobinformations.req,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                // Quyền lợi
-                const Text(
-                  'Quyền lợi',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  jobinformations.benefits,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
+                // const Text(
+                //   'Yêu cầu ứng viên',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Text(
+                //   jobinformations.req,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.normal,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 30,
+                // ),
+                // // Quyền lợi
+                // const Text(
+                //   'Quyền lợi',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 20,
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // Text(
+                //   jobinformations.benefits,
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.normal,
+                //   ),
+                // ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 25),
                   height: 45,
