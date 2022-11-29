@@ -79,9 +79,9 @@ class ApplyJobItem extends StatelessWidget {
                 children: [
                   IconText(Icons.location_on_outlined,
                       jobInformation.workingLocation),
-                  if (!showTime)
-                    IconText(
-                        Icons.access_time_outlined, jobInformation.jobType),
+                  // if (!showTime)
+                  //   IconText(
+                  //       Icons.access_time_outlined, jobInformation.jobType),
                 ],
               )
             ],
