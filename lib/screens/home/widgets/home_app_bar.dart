@@ -2,19 +2,38 @@ import 'package:app_find_job/core/constants/color_constants.dart';
 import 'package:app_find_job/core/helpers/asset_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends StatefulWidget {
+  Map<String, dynamic>? userData;
+
+  @override
+  State<HomeAppBar> createState() => _HomeAppBarState();
+  //gen contructor
+  HomeAppBar({Key? key, required this.userData}) : super(key: key);
+}
+
+class _HomeAppBarState extends State<HomeAppBar> {
   final user = FirebaseAuth.instance.currentUser!;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(
-          top: 25, left: 25, right: 25), //MediaQuery.of(context).padding.top
-      child: userAppBar(
-        name: user.email!,
-        avatar: AssetHelper.avatar,
-      ),
-    );
+    print(widget.userData);
+    return widget.userData == null
+        ? Container(
+            padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            child: userAppBar(
+              name: user.email!,
+              avatar: AssetHelper.avatar,
+            ),
+          )
+        : Container(
+            padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+            child: userAppBar(
+              name: widget.userData!['name'],
+              avatar: AssetHelper.avatar,
+            ),
+          );
   }
 }
 

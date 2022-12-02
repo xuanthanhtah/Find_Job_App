@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ticket To Future</string>
+    <string name="facebook_app_id">3350142378590803</string>
+    <string name="fb_login_protocol_scheme">fb3350142378590803</string>
+    <string name="facebook_client_token">43671ef498b6936cb664c827927eb2ec</string>
+</resources>
