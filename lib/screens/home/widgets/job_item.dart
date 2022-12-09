@@ -62,10 +62,13 @@ class JobItem extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Text(
-            jobInformation.jobTitle,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+          RichText(
+            maxLines: 1,
+            text: TextSpan(
+              text: jobInformation.jobTitle,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           const SizedBox(

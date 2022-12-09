@@ -4,6 +4,7 @@ import 'package:app_find_job/main_app.dart';
 import 'package:app_find_job/screens/ForgotPassword/forgotpassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,6 +23,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  Map<String, dynamic>? _userData;
+  AccessToken? _accessToken;
+  bool _checking = true;
+
   User? currentUser;
   Future signIn() async {
     await FirebaseAuth.instance
@@ -45,8 +51,55 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //_checkIfisLoggedIn();
+  }
+
+  // _checkIfisLoggedIn() async {
+  //   final accessToken = await FacebookAuth.instance.accessToken;
+
+  //   setState(() {
+  //     _checking = false;
+  //   });
+
+  //   if (accessToken == null) {
+  //     _login();
+  //   } else {
+  //     print(accessToken.toJson());
+  //     //return page home
+  //     //Navigator.of(context).pushNamed(ProfilePage.routeName);
+  //     final userData = await FacebookAuth.instance.getUserData();
+  //     _accessToken = accessToken;
+  //     setState(() {
+  //       _userData = userData;
+  //     });
+  //   }
+  // }
+
+  // _login() async {
+  //   final LoginResult result = await FacebookAuth.instance.login();
+
+  //   if (result.status == LoginStatus.success) {
+  //     _accessToken = result.accessToken;
+
+  //     final userData = await FacebookAuth.instance.getUserData();
+  //     _userData = userData;
+  //   } else {
+  //     print(result.status);
+  //     print(result.message);
+  //   }
+  //   setState(() {
+  //     _checking = false;
+  //   });
+  // }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+        // _checking?
+        Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
@@ -95,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          hintText: "Email",
+                          hintText: "email",
                           border: InputBorder.none,
                         ),
                       ),
@@ -283,6 +336,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+      // : MainApp(),
     );
+    // : MainApp();
   }
 }

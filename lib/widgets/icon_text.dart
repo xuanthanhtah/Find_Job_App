@@ -13,15 +13,15 @@ class IconText extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Text(
-          text,
-          overflow: TextOverflow.fade,
+        RichText(
           maxLines: 1,
-          softWrap: false,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Colors.black,
-            overflow: TextOverflow.ellipsis,
+          text: TextSpan(
+            text: text,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.black,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         )
       ],
