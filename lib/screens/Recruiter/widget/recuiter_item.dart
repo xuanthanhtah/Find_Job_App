@@ -42,9 +42,10 @@ class RecruiterItem extends StatelessWidget {
                   Text(
                     recruiters.companyName,
                     style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),

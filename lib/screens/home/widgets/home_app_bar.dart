@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class HomeAppBar extends StatefulWidget {
-  Map<String, dynamic>? userData;
+  // Map<String, dynamic>? userData;
 
   @override
   State<HomeAppBar> createState() => _HomeAppBarState();
   //gen contructor
-  HomeAppBar({Key? key, required this.userData}) : super(key: key);
 }
 
 class _HomeAppBarState extends State<HomeAppBar> {
@@ -18,22 +17,23 @@ class _HomeAppBarState extends State<HomeAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.userData);
-    return widget.userData == null
-        ? Container(
-            padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: userAppBar(
-              name: user.email!,
-              avatar: AssetHelper.avatar,
-            ),
-          )
-        : Container(
-            padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
-            child: userAppBar(
-              name: widget.userData!['name'],
-              avatar: AssetHelper.avatar,
-            ),
-          );
+    return
+        // widget.userData == null
+        //     ? Container(
+        //         padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+        //         child: userAppBar(
+        //           name: user.email!,
+        //           avatar: AssetHelper.avatar,
+        //         ),
+        //       )
+        //     :
+        Container(
+      padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
+      child: userAppBar(
+        name: user.email!,
+        avatar: AssetHelper.avatar,
+      ),
+    );
   }
 }
 

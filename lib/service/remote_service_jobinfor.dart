@@ -2,8 +2,7 @@ import 'package:app_find_job/models/jobinfor.dart';
 import 'package:http/http.dart' as http;
 
 class RemotesServiceJobInformation {
-  static const String url =
-      'http://192.168.101.19:2001/api/JobInformation/GetAll';
+  static const String url = 'http://10.18.26.24:2001/api/JobInformation/GetAll';
   static var client = http.Client();
 
   static Future<List<JobInformation>> fetchJobInformations() async {

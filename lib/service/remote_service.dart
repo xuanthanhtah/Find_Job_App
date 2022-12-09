@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class RemotesService {
-  static const String url = 'http://192.168.101.19:2001/api/Job';
+  static const String url = 'http://10.18.26.24:2001/api/Job';
   static List<Job> parseJobs(String responseBody) {
     var list = json.decode(responseBody) as List<dynamic>;
     List<Job> jobs = list.map((model) => Job.fromJson(model)).toList();
